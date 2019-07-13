@@ -1,6 +1,8 @@
 export type Method =
   | 'get'
   | 'GET'
+  | 'post'
+  | 'POST'
   | 'delete'
   | 'DELETE'
   | 'head'
@@ -17,4 +19,5 @@ export interface AxiosRequestConfig {
   method?: Method
   data?: any
   params?: any
+  headers?: any
 }
