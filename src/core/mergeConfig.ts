@@ -15,8 +15,8 @@ function fromVal2Strat(val1: any, val2: any): any {
 
 function deepMergeStrat(val1: any, val2: any): any {
   if (isPlainObject(val2)) {
-    return deepMerge(val2, val2)
-  } else if (typeof val2 === 'undefined') {
+    return deepMerge(val1, val2)
+  } else if (typeof val2 !== 'undefined') {
     return val2
   } else if (isPlainObject(val1)) {
     return deepMerge(val1)
