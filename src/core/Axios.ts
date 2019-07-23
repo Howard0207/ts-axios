@@ -81,15 +81,15 @@ export default class Axios {
   }
 
   post(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise {
-    return this._requestMethodWithData('post', url, data)
+    return this._requestMethodWithData('post', url, data, config)
   }
 
   put(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise {
-    return this._requestMethodWithData('put', url, data)
+    return this._requestMethodWithData('put', url, data, config)
   }
 
   patch(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise {
-    return this._requestMethodWithData('patch', url, data)
+    return this._requestMethodWithData('patch', url, data, config)
   }
 
   _requestMethodWithoutData(method: Method, url: string, config?: AxiosRequestConfig) {

@@ -46,7 +46,6 @@ export default function mergeConfig(
   }
 
   const config = Object.create(null)
-
   for (let key in config2) {
     mergeField(key)
   }
