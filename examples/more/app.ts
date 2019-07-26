@@ -2,6 +2,7 @@ import axios from '../../src/index'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { AxiosError } from '../../src/helpers/error';
+import qs from 'qs'
 // document.cookie = 'a=b'
 
 // axios.get('/more/get',{params: { a: '123'}}).then(res => {
@@ -88,30 +89,63 @@ import { AxiosError } from '../../src/helpers/error';
 // })
 
 //  添加auth
-axios.post('/more/post', {
-  a: 1
-}, {
-  auth: {
-    username: 'Yee',
-    password: '123456'
+// axios.post('/more/post', {
+//   a: 1
+// }, {
+//   auth: {
+//     username: 'Yee',
+//     password: '123456'
+//   }
+// }).then(res => {
+//   console.log(res)
+// })
+
+
+// axios.get('/more/304').then(res => {
+//   console.log(res)
+// }).catch((e: AxiosError) => {
+//   console.log(e.message)
+// })
+
+// axios.get('/more/304', {
+//   validateStatus(status) {
+//     return status >= 200 && status < 400
+//   }
+// }).then(res => {
+//   console.log(res)
+// }).catch((e: AxiosError) => {
+//   console.log(e.message)
+// })
+
+// 自定义参数序列化参数
+axios.get('/more/get', {
+  params: new URLSearchParams('a=b&c=d')
+}).then(res => {
+  console.log(res)
+})
+
+axios.get('/more/get', {
+  params: {
+    a: 1,
+    b: 2,
+    c: ['a', 'b', 'c']
   }
 }).then(res => {
   console.log(res)
 })
 
-
-axios.get('/more/304').then(res => {
-  console.log(res)
-}).catch((e: AxiosError) => {
-  console.log(e.message)
+const instance = axios.create({
+  paramsSerializer(params) {
+    return qs.stringify(params, { arrayFormat: 'brackets' })
+  }
 })
 
-axios.get('/more/304', {
-  validateStatus(status) {
-    return status >= 200 && status < 400
+instance.get('/more/get', {
+  params: {
+    a: 1,
+    b: 2,
+    c: ['a', 'b', 'c']
   }
 }).then(res => {
   console.log(res)
-}).catch((e: AxiosError) => {
-  console.log(e.message)
 })
