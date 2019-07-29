@@ -60,15 +60,28 @@ describe('helpers:util', () => {
     })
 
     test('should deepMerge properties', () => {
+      const a = { foo: 123 }
+      const b = { bar: 456 }
+      const c = { foo: 789 }
+      const d = deepMerge(a, b, c)
+
+      expect(d.foo).toBe(789)
+      expect(d.bar).toBe(456)
+    })
+
+    test('should deepMerge recursively', function() {
       const a = { foo: { bar: 123 } }
       const b = { foo: { baz: 456 }, bar: { qux: 789 } }
       const c = deepMerge(a, b)
+
       expect(c).toEqual({
         foo: {
           bar: 123,
           baz: 456
         },
-        bar: { qux: 789 }
+        bar: {
+          qux: 789
+        }
       })
     })
 
