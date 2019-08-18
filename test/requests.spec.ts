@@ -1,6 +1,5 @@
 import axios, { AxiosResponse, AxiosError } from '../src/index'
 import { getAjaxRequest } from './helper'
-import { request } from 'http'
 
 describe('requests', () => {
   beforeEach(() => {
