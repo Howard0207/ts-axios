@@ -73,6 +73,14 @@ describe('helpers:url', () => {
       ).toBe('/foo?foo=bar&bar=baz')
     })
 
+    test('should correct discard url hash mark', () => {
+      expect(
+        buildURL('/foo?foo=bar#hash', {
+          query: 'baz'
+        })
+      ).toBe('/foo?foo=bar&query=baz')
+    })
+
     test('should use serializer if provided', () => {
       const serializer = jest.fn(() => {
         return 'foo=bar'
