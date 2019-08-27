@@ -42,15 +42,15 @@ describe('mergeConfig', () => {
     expect(merged.data).toBeUndefined()
   })
 
-  test('shoudl return default headers if pass config2 with undefined', () => {
+  test('should return default headers if pass config2 with undefined', () => {
     expect(
       mergeConfig(
         {
           headers: 'x-mock-header'
         },
         undefined
-      ).toEqual({ headers: 'x-mock-header' })
-    )
+      )
+    ).toEqual({ headers: 'x-mock-header' })
   })
 
   test('should merge auth, headers with defaults', () => {
